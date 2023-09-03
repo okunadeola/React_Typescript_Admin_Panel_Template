@@ -1,0 +1,37 @@
+.notfound {
+
+
+
+    .container{
+        display: flex;
+        height: 100vh;
+        width: 100vw;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+
+
+
+
+        .btn{
+            display: inline-block;
+            background-color: rgb(114, 114, 232) ;
+            outline: none;
+            inset: 0;
+            border: 0;
+            border-radius: 20px;
+            width: 130px;
+            height: 50px;
+            padding: 4px 8px;
+            text-align: center;
+            color: white;
+            box-shadow: 1px 1px 5px rgb(116, 115, 115);
+            cursor: pointer;
+
+            &:hover{
+                box-shadow: 1px 1px 5px rgb(38, 37, 37);
+            }
+        }
+    }
+}

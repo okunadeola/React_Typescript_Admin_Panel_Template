@@ -1,0 +1,63 @@
+
+@import '../../styles/theme.scss';
+
+.dataTable{
+    @include themify($themes){
+
+      .dataGrid{
+        background-color: themed("mainBg");
+        color:themed("textColorSoft");
+        padding: 20px;
+        overflow-x: auto !important;
+        border: none;   
+
+
+
+
+          // extracted from (inspect) of the data grid element
+        .css-v4u5dn-MuiInputBase-root-MuiInput-root, .css-rtrcn9-MuiTablePagination-root, 
+        .css-zylse7-MuiButtonBase-root-MuiIconButton-root , 
+        .css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root{
+          color:themed("textColorSoft");
+        }
+      
+ 
+        
+        .MuiDataGrid-toolbarContainer{
+          flex-direction: row-reverse;
+          overflow-x: auto !important;
+        }
+
+    
+
+
+        
+        .MuiDataGrid-withBorderColor{
+
+          border-color: themed("tableBorderColor");
+        } 
+      
+
+
+
+    
+        img{
+          width: 32px;
+          height: 32px;
+          border-radius: 50%;
+          object-fit: cover;
+        }
+    
+        .action{
+          display: flex;
+          gap: 15px;
+    
+          img{
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+          }
+        }
+      }
+    }
+    }

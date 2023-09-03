@@ -1,0 +1,68 @@
+@import '../../styles/variables.scss';
+@import '../../styles/responsive.scss';
+@import '../../styles/theme.scss';
+
+
+.menu{
+    @include themify($themes){
+
+
+
+        .item{
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-bottom: 20px;
+
+
+            .title{
+                font-style: 12px;
+                font-weight: 200;
+                color:themed("textColorSoft");
+                // color: $soft-color;
+
+                text-transform: uppercase;
+
+                @include lg {
+                    display: none;  
+                }
+            }
+            .titleClose{
+                display: none;  
+            }
+
+            .link{
+                text-decoration: none;
+                color: inherit;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                padding: 10px;
+                border-radius: 5px;
+
+
+                &:hover{
+                    background-color: $soft-bg-hover;
+                }
+
+                .listItemTitle {
+                    @include lg {
+                        display: none;
+                    }
+                }
+
+                
+            }
+            .listClose{
+                width: max-content;
+            }
+
+
+            .active{
+                color: lightgray;
+                background-color: $soft-bg-active;
+            }
+
+        }
+    }
+}

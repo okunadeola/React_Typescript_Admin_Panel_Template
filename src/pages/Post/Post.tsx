@@ -1,7 +1,8 @@
-import { Fragment, useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { Fragment, useEffect, useRef, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import { getAllPostAction } from "../../API/todo";
 import ReactPaginate from "react-paginate";
+import ReactToPrint, { useReactToPrint } from 'react-to-print';
 import {
 
     MoreVertical,
@@ -24,24 +25,15 @@ import {
     DropdownMenu,
     DropdownItem,
     Input,
+    Button,
   } from "reactstrap";
 
   import DataTable from "react-data-table-component";
 import { toast } from "react-hot-toast";
-
-
-
-
-
-
-
-
-
-
-
 // ******
 import Swal, {SweetAlertOptions} from 'sweetalert2'
 import withReactContent from 'sweetalert2-react-content'
+import { CSVLink } from "react-csv";
 
 const ReactSwal = withReactContent(Swal)
 
@@ -61,19 +53,13 @@ interface PostType {
 }
 
 
-
-
-
-
-
-export const confirm = (message: string) => {
+export const confirmSwal = (message: string) => {
+    //ReactSwalWithInput work for vite, for pure react  Swal.fire... should be enough
     const res = ReactSwalWithInput.fire({
       title: "Are you sure?",
       text: message,
       icon: "warning",
       showCancelButton: true,
-      
-    
     } as SweetAlertOptions).then(async (willExecute)=> {
       if(willExecute.isConfirmed) return  true
       return false
@@ -114,8 +100,13 @@ const Post = ()=>{
 
 
     const navigate = useNavigate()
+    const componentRef = useRef<any>();
 
 
+    const handlePrint = useReactToPrint({
+      content: () => componentRef.current,
+    });
+  
 
 
 
@@ -161,6 +152,37 @@ const Post = ()=>{
         }
         
       }
+
+
+
+
+
+      const csvTitle = [
+        { label: "UserId", key: "userId" },
+        { label: "Id", key: "id" },
+        { label: "Title", key: "title" },
+        { label: "Body", key: "body" },
+   
+      ];
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -320,12 +342,14 @@ const Post = ()=>{
         <Fragment>
         <Card className="px-2">
           <CardHeader>
-            <CardTitle tag="h4">Post List</CardTitle>
+            <CardTitle tag="h4">
+              Post List
+            </CardTitle>
           </CardHeader>
           <Row className="justify-content-end mx-0 ">
             
             
-            <div className="card-options py-3">
+            <div className="card-options py-3 d-flex justify-content-between">
     
               <form className="w-50">
                 <div className="input-group">
@@ -338,6 +362,31 @@ const Post = ()=>{
                   />
                 </div>
               </form>
+
+
+
+
+              {/* <ReactToPrint
+              bodyClass="btn btn-primary"
+            
+                trigger={() => <button>Print this out!</button>}
+                content={() => componentRef.current}
+              /> */}
+
+              <Button onClick={handlePrint} >
+                Print
+              </Button>
+
+              <CSVLink 
+                    filename={`detailscr${new Date().getTime()}.csv`}
+                    className='' data={allPost} headers={csvTitle}>
+                    
+                      <Button>Export Excel</Button>
+              </CSVLink>
+             
+              <Link to={'/addpost'}>
+                <Button>+ Add Post</Button>
+              </Link>
             </div>
           </Row>
 
@@ -345,7 +394,7 @@ const Post = ()=>{
             isLoading && <div>loading...</div>
           }
          
-          <div className="react-dataTable mb-2">
+          <div className="react-dataTable mb-2" ref={componentRef}>
             <DataTable
               noHeader
               pagination

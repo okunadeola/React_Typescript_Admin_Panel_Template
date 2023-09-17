@@ -16,6 +16,7 @@ import './styles/global.scss'
 import { useContext } from "react";
 import { DarkModeContext } from "./context/mode";
 import Post from "./pages/Post/Post";
+import AddPost from "./pages/AddPost/AddPost";
 
 
 
@@ -89,6 +90,10 @@ function App() {
         {
           path: "/posts",
           element: <Post />,
+        },
+        {
+          path: "/addpost",
+          element: <AddPost />,
         },
       ],
     },

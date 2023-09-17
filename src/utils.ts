@@ -33,9 +33,10 @@ export const confirm = (message: string) => {
 
 
 
-  const IMAGE_UPLOAD_PRESET = 'x5vjzzr8';
-  const CLOUDINARY_API_URL = 'https://api.cloudinary.com/v1_1/dv1cetenk/upload';
+  const IMAGE_UPLOAD_PRESET = import.meta.env.VITE_APP_IMAGE_UPLOAD_PRESET ;
+  const CLOUDINARY_API_URL = import.meta.env.VITE_APP_CLOUDINARY_API_URL;
   
+  console.log(IMAGE_UPLOAD_PRESET, CLOUDINARY_API_URL)
   
   /**
    * * Upload image to cloudinary storage
@@ -57,7 +58,7 @@ export const confirm = (message: string) => {
         upload_preset: IMAGE_UPLOAD_PRESET,
       };
   
-      const response = await axios.post(CLOUDINARY_API_URL, payload);
+      const response = await axios.post(CLOUDINARY_API_URL as string, payload);
       console.log(response?.data)
       const json = {
         type : response?.data?.resource_type,

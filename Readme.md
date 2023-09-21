@@ -1,6 +1,8 @@
 
  #React_Typescript_Admin_Panel_Template
 
+ #Screenshots
+
 ![panel image][def2]
 
 

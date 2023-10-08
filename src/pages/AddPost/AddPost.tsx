@@ -7,7 +7,7 @@ import { useNavigate } from "react-router-dom";
 import { Camera, XCircle, X } from "react-feather";
 import Avatar from "../../assets/xs/default.webp";
 import Select, { MultiValue } from "react-select";
-// import { ValueType } from "react-select/src/types";
+
 import { confirmSwal } from "../Post/Post";
 
 

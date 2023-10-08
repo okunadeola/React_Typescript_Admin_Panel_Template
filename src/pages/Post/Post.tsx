@@ -1,8 +1,8 @@
 import { Fragment, useEffect, useRef, useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { getAllPostAction } from "../../API/todo";
 import ReactPaginate from "react-paginate";
-import ReactToPrint, { useReactToPrint } from 'react-to-print';
+import  { useReactToPrint } from 'react-to-print';
 import {
 
     MoreVertical,
@@ -99,7 +99,7 @@ const Post = ()=>{
     const [count, setCount] = useState<number>(0);
 
 
-    const navigate = useNavigate()
+
     const componentRef = useRef<any>();
 
 

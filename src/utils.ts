@@ -36,7 +36,7 @@ export const confirm = (message: string) => {
   const IMAGE_UPLOAD_PRESET = import.meta.env.VITE_APP_IMAGE_UPLOAD_PRESET ;
   const CLOUDINARY_API_URL = import.meta.env.VITE_APP_CLOUDINARY_API_URL;
   
-  console.log(IMAGE_UPLOAD_PRESET, CLOUDINARY_API_URL)
+
   
   /**
    * * Upload image to cloudinary storage

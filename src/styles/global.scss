@@ -40,6 +40,7 @@ a {
                 padding: 5px 20px;
                 border-right: 2px solid $soft-bg;
                 box-shadow: 1px 0px  0px 0px #5e5c5c;
+                transition: 0.5s;
               
                 @include lg {
                   width: max-content;
@@ -47,6 +48,7 @@ a {
               }
               .menuContainerShrink{
                 width: max-content;
+                transition: 0.5s;
               }
               
               .contentContainer{
